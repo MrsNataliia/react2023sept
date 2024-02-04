@@ -42,22 +42,11 @@ const App = () => {
     ];
 
     return (
+
         <div>
-            {simpsons.map(simpson => <Simpson
-                name={simpson.name}
-                surname={simpson.surname}
-                age={simpson.age}
-                photo={simpson.photo}
-                info={simpson.info}
-                key={simpson.name}
-            />)};
+            {simpsons.map(simpson => <Simpson simpson={simpson} key={simpson.name}/>)};
 
         </div>
-
-        // <div>
-        //     {simpsons.map(simpson => <Simpson simpson={simpson} key={simpson.name}/>)};
-        //
-        // </div>
     );
 };
 

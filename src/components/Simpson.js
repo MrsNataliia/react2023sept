@@ -1,4 +1,5 @@
-const Simpson = ({name, surname, age, photo, info}) => {
+const Simpson = ({simpson}) => {
+    const {name, surname, age, photo, info} = simpson
     return (
         <div>
             <h1>{name} {surname}</h1>
