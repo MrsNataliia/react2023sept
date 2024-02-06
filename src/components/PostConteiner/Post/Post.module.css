@@ -1,0 +1,5 @@
+.Post{
+    margin: 10px;
+    width: calc(20vw - 22px);
+    background-color: antiquewhite;
+}

@@ -1,0 +1,8 @@
+.Posts{
+    display: flex;
+    flex-flow: wrap;
+    width: 80vw;
+}
+.main{
+    display: flex;
+}
