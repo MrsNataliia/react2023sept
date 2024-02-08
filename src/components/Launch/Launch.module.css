@@ -1,0 +1,11 @@
+.launch{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(24vw - 20px);
+    margin: 10px;
+    background-color: #63829b;
+    border-radius: 10px;
+
+}
