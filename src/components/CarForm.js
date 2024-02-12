@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 
 import {carService} from "../services/CarService";
 
-const CarForm = ({setTrigger, carForUpdate}) => {
+const CarForm = ({setTrigger, carForUpdate, setCarForUpdate}) => {
     const {reset, register, handleSubmit, formState: {isValid, errors}, setValue} = useForm({mode: "all"});
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const CarForm = ({setTrigger, carForUpdate}) => {
             setValue('price', carForUpdate.price)
             setValue('year', carForUpdate.year)
         }
-    }, [carForUpdate]);
+    }, [carForUpdate, setValue]);
 
     const save = async (car) => {
         await carService.create(car)
@@ -20,9 +20,16 @@ const CarForm = ({setTrigger, carForUpdate}) => {
         reset()
     }
 
+    const update = async (car) =>{
+        await carService.updateById(carForUpdate.id, car)
+        setTrigger (prev=>!prev)
+        setCarForUpdate(null)
+        reset()
+    }
+
     return (
 
-        <form onSubmit={handleSubmit(save)}>
+        <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
             <input type='text' placeholder={'brand'} {...register('brand', {
                 pattern: {
                     value: /^[a-zA-Zа-яА-яёЁіІїЇєЄҐґ]{1,20}$/,
@@ -39,7 +46,7 @@ const CarForm = ({setTrigger, carForUpdate}) => {
                 min: {value: 1990, message: 'min 1990'},
                 max: {value: 2024, message: 'max 2024'}
             })}/>
-            <button disabled={!isValid}>save</button>
+            <button disabled={!isValid}>{carForUpdate ? 'update' : 'save'}</button>
 
             {errors.brand && <div>{errors.brand.message}</div>}
             {errors.price&&<div>{errors.price.message}</div>}
