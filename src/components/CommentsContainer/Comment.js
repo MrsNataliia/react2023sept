@@ -2,7 +2,7 @@ import React from 'react';
 
 const Comment = ({comment}) => {
     const {postId, name, email, body} = comment
-    console.log(comment)
+
     return (
         <div>
             <hr/>
