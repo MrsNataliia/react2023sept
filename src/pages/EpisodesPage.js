@@ -1,12 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const EpisodesPage = () => {
     return (
         <div>
-            App
+            EpisodesPage
         </div>
     );
 };
 
-export {App};
-
+export {EpisodesPage};
